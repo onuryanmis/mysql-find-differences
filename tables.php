@@ -90,9 +90,10 @@ if (!isset($_SESSION['db1Data']) || !isset($_SESSION['db2Data'])) {
             $.post('ajax.php',{'table':T,'columns':columns,'opr':'transferCols','type':type},(response)=>{
               if (response.status == 1) {
                 $.findTableColumns(T);
-                swal('Success','Selected columns are modified successfully','success');
+                $.findTables();
+                swal('Success',response.reply,'success');
               }else{
-                swal('Error','Error while modifying selected columns','warning');
+                swal('Error',response.reply,'warning');
               }
             },'json');
           }
@@ -127,9 +128,9 @@ if (!isset($_SESSION['db1Data']) || !isset($_SESSION['db2Data'])) {
             $.post('ajax.php',{'tables':tables,'opr':'transfer','type':type},(response)=>{
               if (response.status == 1) {
                  $.findTables();
-                 swal('Success','Selected tables added to other database successfully','success');
+                 swal('Success',response.reply,'success');
               }else{
-                swal('Error','Error while transfer the tables to other database','warning');
+                swal('Error',response.reply,'warning');
               }
             },'json');
           }

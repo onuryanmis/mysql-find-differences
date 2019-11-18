@@ -127,9 +127,15 @@ if($_POST['opr'] == 'transfer'  && isset($_POST['tables'])){
   }
   if ($dbScript->runQuery($sql,$_POST['type'])) {
     $json['status'] = 1;
+    $json['reply'] = 'Selected tables transfered successfully.';
   }else{
     $json['status'] = 0;
+    $json['reply'] = 'Error while transferring tables.';
   }
+  echo json_encode($json);
+}elseif($_POST['opr'] == 'transfer' && !isset($_POST['tables'])){
+  $json['status'] = 0;
+  $json['reply'] = 'You did not select any table.';
   echo json_encode($json);
 }
 /**
@@ -158,8 +164,14 @@ if($_POST['opr'] == 'transferCols'  && isset($_POST['columns']) && isset($_POST[
   $sql = substr($sql,0,-1);
   if ($dbScript->runQuery($sql,$_POST['type'])) {
     $json['status'] = 1;
+    $json['reply'] = 'Selected columns are modified successfully';
   }else{
     $json['status'] = 0;
+    $json['reply'] = 'Error while modifying selected columns';
   }
+  echo json_encode($json);
+}elseif($_POST['opr'] == 'transferCols'  && (!isset($_POST['columns']) || !isset($_POST['table']))){
+  $json['status'] = 0;
+  $json['reply'] = 'You did not select any table or any column';
   echo json_encode($json);
 }
