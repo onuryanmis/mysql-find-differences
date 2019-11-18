@@ -1,0 +1,9 @@
+h2{margin-bottom:2rem;margin-top:2rem;}
+input{border-radius:0!important;}
+input:focus{box-shadow:none!important;}
+.db-first{background:lightskyblue;}
+.db-second{background:orange;}
+button{margin:0 auto;margin-top:15px;}
+select{width:100%;height:250px;overflow-x:scroll;}
+.transfer-btn{text-align:center;}
+.transfer-btn button{margin:20px;}
